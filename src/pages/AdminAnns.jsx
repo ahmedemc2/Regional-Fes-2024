@@ -7,7 +7,7 @@ function AdminAnns() {
   const navigate = useNavigate();
 
   return (
-    <table>
+    <table className="table">
       <thead>
         <tr>
           <th>Email</th>

@@ -1,7 +1,13 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { annonces, regions, users, categories } from "../db";
 
-const initialState = { annonces, regions, users, categories, isLogged: false };
+const initialState = {
+  annonces,
+  regions,
+  users,
+  categories,
+  user: null,
+};
 
 const AffairesSlice = createSlice({
   name: "affaires",
@@ -33,10 +39,10 @@ const AffairesSlice = createSlice({
           user.upass === action.payload.password
       );
 
-      state.isLogged = isUser === undefined ? false : true;
+      state.user = isUser === undefined ? null : isUser;
     },
     seDeconnecter: (state) => {
-      state.isLogged = false;
+      state.user = null;
     },
   },
 });
